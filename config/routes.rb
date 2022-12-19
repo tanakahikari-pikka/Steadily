@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
+  get 'users/index'
+  get 'users/new'
+  get 'users/show'
   devise_for :users
+  resources :users
   resources :logs
   get 'top/home'
   root 'top#home'
