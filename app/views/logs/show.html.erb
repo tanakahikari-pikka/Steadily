@@ -3,6 +3,7 @@
   <% sum += log.study_record %>
 <% end %>
 <ul>
+  <li><%= current_user.name %></li>
   <li><%= @log.title %></li>
   <li><%= @log.achieve %></li>
   <li><%= sum %></li>
@@ -10,8 +11,8 @@
 </ul>
 
 <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" 
-data-text="No.<%= @log.id %>
-【学習内容】#
+data-text="No.<%= @logs.count %>
+【学習内容】
 <%= @log.title %>
 
 【できるようになったこと】

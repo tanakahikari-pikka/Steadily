@@ -8,12 +8,14 @@ class LogsController < ApplicationController
   end
 
   def show
+    @user = current_user
     @log = Log.find(params[:id])
-    @logs = Log.all
+    @logs = @user.logs
   end
 
   def create
     @log = Log.new(log_params)
+    @log.user_id = current_user.id
     @log.save
     redirect_to log_path(@log)
   end
