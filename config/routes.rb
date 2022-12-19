@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :logs
   get 'top/home'
   root 'top#home'
