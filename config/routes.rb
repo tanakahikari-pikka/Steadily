@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  get 'logs/index'
-  get 'logs/new'
-  get 'logs/show'
+  resources :logs
   get 'top/home'
   root 'top#home'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

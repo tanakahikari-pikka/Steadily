@@ -1,2 +1,10 @@
-<h1>Logs#new</h1>
-<p>Find me in app/views/logs/new.html.erb</p>
+<%= form_with model: @log,local:true,  url: logs_path, method: :post do |f| %>
+  <h2>タイトル</h2>
+  <%= f.text_field :title %>
+  <h2>成果</h2>
+  <%= f.text_area :achieve %>
+  <h2>学習時間</h2>
+  <%= f.number_field :study_record %>
+  <br>
+  <%= f.submit "記録" %>
+<% end %>
