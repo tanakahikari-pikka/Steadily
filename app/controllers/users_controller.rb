@@ -4,7 +4,8 @@ class UsersController < ApplicationController
     @logs = @user.logs
   end
 
-  def new
-    @log = Log.new
+  private
+  def user_params
+    params.require(:user).permit(:name, :email)
   end
 end
