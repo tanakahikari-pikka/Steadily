@@ -1,0 +1,8 @@
+<% @logs.each do |log| %>
+  <ul>
+    <li><%= current_user.name %></li>
+    <li><%= log.title %></li>
+    <li><%= log.achieve %></li>
+    <li><%= log.study_record %></li>
+  </ul>
+<% end %>
