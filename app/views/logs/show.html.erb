@@ -1,0 +1,25 @@
+<% sum = 0 %>
+<% @logs.each do |log| %>
+  <% sum += log.study_record %>
+<% end %>
+<ul>
+  <li><%= @log.title %></li>
+  <li><%= @log.achieve %></li>
+  <li><%= sum %></li>
+  <li><%= @log.study_record %></li>
+</ul>
+
+<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" 
+data-text="No.<%= @log.id %>
+【学習内容】#
+<%= @log.title %>
+
+【できるようになったこと】
+<%= @log.achieve %>
+学習時間 (h) : <%= @log.study_record %> 合計 (h) : <%= sum %>
+"
+class="twitter-share-button" data-url="
+by Steadily" data-show-count="false">Tweet</a>
+
+
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
