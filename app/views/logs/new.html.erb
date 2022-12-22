@@ -1,6 +1,9 @@
 <%= form_with model: @log,local:true,  url: logs_path, method: :post do |f| %>
   <h2>タイトル</h2>
   <%= f.text_field :title %>
+  <br>
+  <%= f.label :category_id, 'カテゴリー' %>
+  <%= f.collection_select :category_id, Category.all, :id, :name, { prompt: '選択してください' }, class: 'form-control' %>
   <h2>成果</h2>
   <%= f.text_area :achieve %>
   <h2>学習時間</h2>
