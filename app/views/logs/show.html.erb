@@ -8,10 +8,11 @@
   <li><%= @log.achieve %></li>
   <li><%= sum %></li>
   <li><%= @log.study_record %></li>
+  <li><%= @log.category.name %></li>
 </ul>
 
 <a href="https://twitter.com/share?ref_src=twsrc%5Etfw"
-data-text="No.<%= @logs.count %>
+data-text="No.<%= @logs.count %># <%= @log.category.name %>
 【学習内容】
 <%= @log.title %>
 
