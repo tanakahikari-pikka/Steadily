@@ -3,3 +3,73 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.accordion {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  max-width: 300px;
+  position: relative;
+  width: 100%;
+}
+.accordion-title {
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px 20px;
+}
+.accordion-content {
+  display: none;
+  padding: 10px 20px;
+}
+.accordion-content p {
+  font-size: 13px;
+  line-height: 1.5;
+}
+/* タイトルの背景色 */
+.accordion-item:nth-of-type(1) .accordion-title {
+  background-color: #7f7fff;
+}
+.accordion-item:nth-of-type(2) .accordion-title {
+  background-color: #66cdaa;
+}
+.accordion-item:nth-of-type(3) .accordion-title {
+  background-color: #ff7f7f;
+}
+/* コンテンツボックスの枠線 */
+.accordion-item:nth-of-type(1) .accordion-content {
+  border-bottom: 2px solid #7f7fff;
+  border-left: 2px solid #7f7fff;
+  border-right: 2px solid #7f7fff;
+}
+.accordion-item:nth-of-type(2) .accordion-content {
+  border-bottom: 2px solid #66cdaa;
+  border-left: 2px solid #66cdaa;
+  border-right: 2px solid #66cdaa;
+}
+.accordion-item:nth-of-type(3) .accordion-content {
+  border-bottom: 2px solid #ff7f7f;
+  border-left: 2px solid #ff7f7f;
+  border-right: 2px solid #ff7f7f;
+}
+/* 矢印 */
+.accordion-title {
+  position: relative;
+}
+.accordion-title::after {
+  border-right: solid 2px #fff;
+  border-top: solid 2px #fff;
+  content: "";
+  display: block;
+  height: 8px;
+  position: absolute;
+  right: 25px;
+  top: 38%;
+  transform: rotate(135deg);
+  transition: transform .3s ease-in-out, top .3s ease-in-out;
+  width: 8px;
+}
+.accordion-title.open::after {
+  top: 45%;
+  transform: rotate(-45deg);
+}
