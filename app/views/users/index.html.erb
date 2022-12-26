@@ -1,9 +1,5 @@
-<% @logs.each do |log| %>
+<% @users.each do |user| %>
   <ul>
-    <li><%= current_user.name %></li>
-    <li><%= log.category.name %></li>
-    <li><%= log.title %></li>
-    <li><%= log.achieve %></li>
-    <li><%= log.study_record %></li>
+    <li><%= user.name %></li>
   </ul>
 <% end %>
