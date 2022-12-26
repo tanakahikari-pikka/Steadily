@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   devise_for :users
-  resources :categories, except: [:new, :show]
+  resources :categories
   resources :users
   resources :logs
   get 'top/home'
