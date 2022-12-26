@@ -1,2 +1,27 @@
-<h1>Logs#index</h1>
-<p>Find me in app/views/logs/index.html.erb</p>
+<h2>みんなのログ</h2>
+<h3>みんなの総学習時間 : <%= @logs.sum(:study_record) %>(h) </h3>
+<table>
+  <thead>
+    <th>タイトル</th>
+    <th>ユーザー名</th>
+    <th>成果</th>
+    <th>良かった点</th>
+    <th>改善点</th>
+    <th>今後試すこと</th>
+    <th>学習時間</th>
+  </thead>
+  <% @logs.each do |log| %>
+    <tbody>
+      <tr>
+        <td><%= log.title %></td>
+        <td><%= log.user.name %></td>
+        <td><%= log.category.name %></td>
+        <td><%= log.achieve %></td>
+        <td><%= log.keep %></td>
+        <td><%= log.problem %></td>
+        <td><%= log.try %></td>
+        <td><%= log.study_record %></td>
+      </tr>
+    </tbody>
+  <% end %>
+</table>

@@ -1,1 +1,24 @@
-aaaa
+<h2><%= @category.name %></h2>
+<h3>総学習時間 : <%= @logs.sum(:study_record) %>(h) </h3>
+<table>
+  <thead>
+    <th>タイトル</th>
+    <th>成果</th>
+    <th>良かった点</th>
+    <th>改善点</th>
+    <th>今後試すこと</th>
+    <th>学習時間</th>
+  </thead>
+  <% @logs.each do |log| %>
+    <tbody>
+      <tr>
+        <td><%= log.title %></td>
+        <td><%= log.achieve %></td>
+        <td><%= log.keep %></td>
+        <td><%= log.problem %></td>
+        <td><%= log.try %></td>
+        <td><%= log.study_record %></td>
+      </tr>
+    </tbody>
+  <% end %>
+</table>
