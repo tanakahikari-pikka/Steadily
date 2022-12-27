@@ -8,6 +8,7 @@ class UsersController < ApplicationController
     @user = current_user
     @logs = @user.logs
     @categories = @user.categories.distinct
+    @category_logs = @user.categories.group(:name).count
   end
 
   private

@@ -1,6 +1,7 @@
 <h1>マイページ</h1>
 <h2><%= current_user.name %>のログ</h2>
 <h3>総学習時間 : <%= @logs.sum(:study_record) %>(h) </h3>
+<%= pie_chart @category_logs %>
 <table>
   <thead>
     <th>タイトル</th>
