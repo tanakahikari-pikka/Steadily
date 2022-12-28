@@ -1,27 +1,34 @@
-<h2>みんなのログ</h2>
-<h3>みんなの総学習時間 : <%= @logs.sum(:study_record) %>(h) </h3>
-<table>
-  <thead>
-    <th>タイトル</th>
-    <th>ユーザー名</th>
-    <th>成果</th>
-    <th>良かった点</th>
-    <th>改善点</th>
-    <th>今後試すこと</th>
-    <th>学習時間</th>
-  </thead>
-  <% @logs.each do |log| %>
-    <tbody>
-      <tr>
-        <td><%= log.title %></td>
-        <td><%= log.user.name %></td>
-        <td><%= log.category.name %></td>
-        <td><%= log.achieve %></td>
-        <td><%= log.keep %></td>
-        <td><%= log.problem %></td>
-        <td><%= log.try %></td>
-        <td><%= log.study_record %></td>
-      </tr>
-    </tbody>
-  <% end %>
-</table>
+<div class="container">
+  <div class="row">
+    <h2>みんなのログ</h2>
+    <h3>みんなの総学習時間 : <%= @logs.sum(:study_record) %>(h) </h3>
+    <table class="table table-success table-hover shadow">
+      <thead>
+        <tr>
+          <th class="p-4">タイトル</th>
+          <th class="p-4">ユーザー名</th>
+          <th class="p-4">カテゴリ名</th>
+          <th class="p-4">成果</th>
+          <th class="p-4">良かった点</th>
+          <th class="p-4">改善点</th>
+          <th class="p-4">今後試すこと</th>
+          <th class="p-4">学習時間</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @logs.each do |log| %>
+        <tr>
+          <td class="p-4"><%= log.title %></td>
+          <td class="p-4"><%= log.user.name %></td>
+          <td class="p-4"><%= log.category.name %></td>
+          <td class="p-4"><%= log.achieve %></td>
+          <td class="p-4"><%= log.keep %></td>
+          <td class="p-4"><%= log.problem %></td>
+          <td class="p-4"><%= log.try %></td>
+          <td class="p-4"><%= log.study_record %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  <div>
+<div>
