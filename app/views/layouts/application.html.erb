@@ -25,7 +25,9 @@
               <%= link_to "ユーザー一覧", users_path %>
             </li>
             <li class="col-xs-2">
-              <%= link_to "マイページ", user_path(current_user.id) %>
+              <% if user_signed_in? %>
+                <%= link_to "マイページ", user_path(current_user.id) %>
+              <% end %>
             </li>
             <li class="col-xs-2">
               <%= link_to "ログ作成", new_log_path %>
