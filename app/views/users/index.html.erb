@@ -1,5 +1,21 @@
-<% @users.each do |user| %>
-  <ul>
-    <li><%= user.name %></li>
-  </ul>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-9">
+      <h2>ユーザー一覧</h2>
+      <table class="table table-success table-hover shadow">
+        <thead>
+          <tr>
+            <th class="p-4">ユーザー名</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td class="p-4"><%= user.name %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  <div>
+<div>
