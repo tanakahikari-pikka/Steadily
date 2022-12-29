@@ -21,13 +21,13 @@
       <%= f.text_area :problem %>
     </div>
     <div class="form-group">
-      <%= f.label :try, '次回試すこと' %>
+      <%= f.label :try, '今後試すこと' %>
       <%= f.text_area :try %>
     </div>
   <div>
   <div class="form-group">
     <%= f.label :study_record, '学習時間' %>
-    <%= f.number_field :study_record %>
+    <%= f.number_field :study_record, step: "0.1" %>
   </div>
   <%= f.submit "記録" %>
 <% end %>
