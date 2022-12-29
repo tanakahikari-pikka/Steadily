@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     @logs = @user.logs
     @categories = @user.categories.distinct
     @category_logs = @user.categories.group(:name).count
+    @category_study_records = @user.categories.group(:name).sum(:study_record)
   end
 
   private
