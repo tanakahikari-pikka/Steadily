@@ -1,39 +1,47 @@
-<h1>マイページ</h1>
-<h2><%= current_user.name %>のログ</h2>
-<h3>総学習時間 : <%= @logs.sum(:study_record) %>(h) </h3>
-<%= pie_chart @category_logs %>
-<%= pie_chart @category_study_records %>
-<table>
-  <thead>
-    <th>タイトル</th>
-    <th>カテゴリ</th>
-    <th>成果</th>
-    <th>良かった点</th>
-    <th>改善点</th>
-    <th>今後試すこと</th>
-    <th>学習時間</th>
-  </thead>
-  <% @logs.each do |log| %>
-    <tbody>
-      <tr>
-        <td><%= log.title %></td>
-        <td><%= log.category.name %></td>
-        <td><%= log.achieve %></td>
-        <td><%= log.keep %></td>
-        <td><%= log.problem %></td>
-        <td><%= log.try %></td>
-        <td><%= log.study_record %></td>
-      </tr>
-    </tbody>
-  <% end %>
-</table>
-<h2><%= current_user.name %>のカテゴリ一覧</h2>
-<table>
-  <% @categories.each do |category| %>
-    <tbody>
-      <tr>
-        <td><%= link_to category.name,category_path(category) %> </td>
-      </tr>
-    </tbody>
-  <% end %>
-</table>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-9">
+      <h2>マイページ</h2>
+      <h3><%= current_user.name %>のログ</h2>
+      <h3><%= current_user.name %>総学習時間 : <%= @logs.sum(:study_record) %>(h) </h3>
+      <table class="table table-success table-hover shadow">
+        <thead>
+          <tr>
+            <th class="p-4">タイトル</th>
+            <th class="p-4">カテゴリ名</th>
+            <th class="p-4">成果</th>
+            <th class="p-4">学習時間</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @logs.each do |log| %>
+          <tr>
+            <td class="p-4"><%= log.title %></td>
+            <td class="p-4"><%= log.category.name %></td>
+            <td class="p-4"><%= log.achieve %></td>
+            <td class="p-4"><%= log.study_record %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-xs-3">
+      <h2><%= current_user.name %>のカテゴリ一覧</h2>
+      <table>
+        <% @categories.each do |category| %>
+          <tbody>
+            <tr>
+              <td><%= link_to category.name,category_path(category) %> </td>
+            </tr>
+          </tbody>
+        <% end %>
+      </table>
+      <div class="row">
+        <%= pie_chart @category_logs %>
+      </div>
+      <div class="row">
+        <%= pie_chart @category_study_records %>
+      </div>
+    </div>
+  <div>
+<div>

@@ -23,6 +23,6 @@ class LogsController < ApplicationController
   private
 
   def log_params
-    params.require(:log).permit(:title, :achieve, :study_record, :category_id )
+    params.require(:log).permit(:title, :achieve, :study_record, :category_id, :keep, :try, :problem )
   end
 end
