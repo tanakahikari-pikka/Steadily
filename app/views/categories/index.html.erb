@@ -1,34 +1,39 @@
-<div class="row">
-  <div class="col-xs-3">
-    <%= form_with model: @category, local: true do |f| %>
-      <%= f.label :name, 'カテゴリー名'%>
-      <%= f.text_field :name, class:'form-control' %>
-      <%= f.submit '追加', class: 'btn btn-primary btn-block' %>
-    <% end %>
-  </div>
-  <div class="col-xs-9">
-    <table class="table">
+<div class="container">
+  <div class="row">
+    <table class="table table-success table-hover shadow">
       <thead>
+        <tr class="mb-3">
+          <%= form_with model: @category, local: true do |f| %>
+            <%= f.label :name, 'カテゴリー名'%>
+            <%= f.text_field :name, class:'form-control' %>
+            <%= f.submit '追加', class: 'btn btn-primary btn-block' %>
+          <% end %>
+        </tr>
         <tr>
-          <th>
+          <th class="p-4">
             カテゴリー名
+          </th>
+          <th class="p-4">
+          </th>
+          <th class="p-4">
           </th>
         </tr>
       </thead>
       <tbody>
-        <%= @categories.each do |category|  %>
+        <% @categories.each do |category|  %>
           <tr>
-            <td>
+            <td class="p-4">
               <%= category.name %>
             </td>
-            <td>
+            <td class="p-4">
               <%= link_to '編集', edit_category_path(category), class: 'btn-sm btn-primary' %>
             </td>
-            <td>
+            <td class="p-4">
               <%= link_to '削除', category_path(category), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn-sm btn-danger' %>
             </td>
           </tr>
         <% end %>
+      </tbody>
     </table>
-  </div>
-</div>
+  <div>
+<div>
