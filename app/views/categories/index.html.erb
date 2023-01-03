@@ -13,10 +13,6 @@
           <th class="p-4">
             カテゴリー名
           </th>
-          <th class="p-4">
-          </th>
-          <th class="p-4">
-          </th>
         </tr>
       </thead>
       <tbody>
@@ -24,12 +20,6 @@
           <tr>
             <td class="p-4">
               <%= category.name %>
-            </td>
-            <td class="p-4">
-              <%= link_to '編集', edit_category_path(category), class: 'btn-sm btn-primary' %>
-            </td>
-            <td class="p-4">
-              <%= link_to '削除', category_path(category), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn-sm btn-danger' %>
             </td>
           </tr>
         <% end %>
