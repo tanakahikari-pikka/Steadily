@@ -15,12 +15,16 @@
         </thead>
         <tbody>
         <% @logs.each do |log| %>
-          <tr>
-            <td class="p-4"><%= log.title %></td>
-            <td class="p-4"><%= log.category.name %></td>
-            <td class="p-4"><%= log.achieve %></td>
-            <td class="p-4"><%= log.study_record %></td>
-          </tr>
+            <tr>
+                <td class="p-4">
+                  <%=link_to log_path(log), class:"text-dark" do %>
+                    <%= log.title %>
+                  <% end %>
+                </td>
+                <td class="p-4"><%= log.category.name %></td>
+                <td class="p-4"><%= log.achieve %></td>
+                <td class="p-4"><%= log.study_record %></td>
+            </tr>
         <% end %>
         </tbody>
       </table>
@@ -37,9 +41,11 @@
         <% end %>
       </table>
       <div class="row">
+        <p>ログ数</p>
         <%= pie_chart @category_logs %>
       </div>
       <div class="row">
+        <p>学習時間</p>
         <%= pie_chart @category_study_records %>
       </div>
     </div>

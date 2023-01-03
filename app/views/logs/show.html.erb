@@ -2,13 +2,15 @@
 <% @logs.each do |log| %>
   <% sum += log.study_record %>
 <% end %>
-<ul>
+<ul class="text-dark">
   <li><%= current_user.name %></li>
   <li><%= @log.title %></li>
   <li><%= @log.achieve %></li>
   <li><%= sum %></li>
   <li><%= @log.study_record %></li>
   <li><%= @log.category.name %></li>
+  <li><%= link_to "編集", edit_log_path(@log) %></li>
+  <li><%= button_to "削除", log_path(@log), method: :delete %></li>
 </ul>
 
 <a href="https://twitter.com/share?ref_src=twsrc%5Etfw"
