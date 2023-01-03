@@ -1,4 +1,6 @@
 class Category < ApplicationRecord
-  has_many :logs
-  has_many :users, :through => :logs
+  has_many :logs, dependent: :destroy
+  has_many :users, :through => :logs, dependent: :destroy
+
+  validates :name, uniqueness: true, presence: true
 end
