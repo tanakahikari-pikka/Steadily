@@ -1,38 +1,38 @@
 <%= form_with model: log,local:true,  url: logs_path, method: :post do |f| %>
-  <div class="form-group">
+  <div class="form-group has-success">
     <h2>タイトル</h2>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, class: 'form-control' %>
   </div>
-  <div class="form-group">
+  <div class="form-group has-success">
     <%= f.label :category_id, 'カテゴリー' %>
     <%= f.collection_select :category_id, Category.all, :id, :name, { prompt: '選択してください' }, class: 'form-control' %>
   </div>
-  <div class="form-group">
+  <div class="form-group has-success">
     <%= f.label :achieve, '成果' %>
-    <%= f.text_area :achieve %>
+    <%= f.text_area :achieve, class: 'form-control' %>
   </div>
   <div class="kpt">
-    <div class="form-group">
+    <div class="form-group has-success">
       <%= f.label :keep, '良かった点' %>
-      <%= f.text_area :keep %>
+      <%= f.text_area :keep, class: 'form-control' %>
     </div>
-    <div class="form-group">
+    <div class="form-group has-success">
       <%= f.label :keep, '改善点' %>
-      <%= f.text_area :problem %>
+      <%= f.text_area :problem, class: 'form-control' %>
     </div>
-    <div class="form-group">
+    <div class="form-group has-success">
       <%= f.label :try, '今後試すこと' %>
-      <%= f.text_area :try %>
+      <%= f.text_area :try, class: 'form-control' %>
     </div>
   <div>
-  <div class="form-group">
+  <div class="form-group has-success">
     <%= f.label :study_record, '学習時間' %>
-    <%= f.number_field :study_record, step: "0.1" %>
+    <%= f.number_field :study_record, step: "0.1", class: 'form-control' %>
   </div>
   <% if controller.action_name == "edit" %>
-    <%= f.submit "編集" %>
+    <%= f.submit "編集", class: 'btn-lg btn-success rounded-pill' %>
   <% end %>
   <% if controller.action_name == "new" %>
-    <%= f.submit "記録" %>
+    <%= f.submit "記録", class: 'btn-lg btn-success rounded-pill' %>
   <% end %>
 <% end %>
