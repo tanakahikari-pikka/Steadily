@@ -2,28 +2,82 @@
 <% @logs.each do |log| %>
   <% sum += log.study_record %>
 <% end %>
-<ul class="text-dark">
-  <li><%= current_user.name %></li>
-  <li><%= @log.title %></li>
-  <li><%= @log.achieve %></li>
-  <li><%= sum %></li>
-  <li><%= @log.study_record %></li>
-  <li><%= @log.category.name %></li>
-  <li><%= link_to "編集", edit_log_path(@log) %></li>
-  <li><%= button_to "削除", log_path(@log), method: :delete %></li>
-</ul>
-
-<a href="https://twitter.com/share?ref_src=twsrc%5Etfw"
-data-text="#<%= @log.category.name %>  No.<%= @logs.count %>
-【学習内容】
-<%= @log.title %>
-
-【成果】
-<%= @log.achieve %>
-学習時間 (h) : <%= @log.study_record %> 合計 (h) : <%= sum %>
-"
-class="twitter-share-button" data-url="
-by Steadily" data-show-count="false">Tweet</a>
-
-
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3>#<%= @log.category.name %></h2>
+      <h2><%= @log.title %></h2>
+      <div class="d-flex">
+        <p class="me-3">学習の成果を共有する=></p>
+        <%= render 'logs/shared/tweet', log: @log, logs: @logs, sum: sum %>
+      </div>
+      <table class="table table-success table-hover">
+        <tbody>
+          <% unless @log.user_id == current_user.id %>
+            <tr>
+              <td>
+                ユーザー名
+              </td>
+              <td>
+                <%= current_user.name %>
+              </td>
+            </tr>
+          <% end %>
+          <tr>
+            <td>
+              成果
+            </td>
+            <td>
+              <%= @log.achieve %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              学習時間
+            </td>
+            <td>
+              <%= @log.study_record %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              総学習時間
+            </td>
+            <td>
+              <%= sum %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              良かった点
+            </td>
+            <td>
+              <%= @log.keep %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              改善点
+            </td>
+            <td>
+              <%= @log.problem %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              今後試すこと
+            </td>
+            <td>
+              <%= @log.try %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="text-dark d-flex justify-content-center">
+      <%= link_to "編集", edit_log_path(@log), class:"btn-lg btn-success me-5" %>
+      <%= button_to "削除", log_path(@log), method: :delete, class:"btn-lg btn-danger" %>
+    </div>
+  </div>
+</div>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
