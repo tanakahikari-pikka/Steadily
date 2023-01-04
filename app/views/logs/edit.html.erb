@@ -1,7 +1,13 @@
+<%= render 'logs/shared/error_messages', resource: @log %>
 <div class="container">
   <div class="row">
     <div class="col">
-      <%= render 'logs/shared/form', log: @log %>
+      <h2>
+        ログ編集
+      </h2>
+      <%= form_with model: @log,local:true do |f| %>
+        <%= render 'logs/shared/form', f: f %>
+      <% end %>
     </div>
   </div>
 </div>
