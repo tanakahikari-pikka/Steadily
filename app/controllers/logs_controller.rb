@@ -6,13 +6,14 @@ class LogsController < ApplicationController
   end
 
   def index
-    @logs = Log.all
+    @logs = Log.page(params[:page]).per(8)
+    @study_record_sum = Log.all.sum(:study_record)
   end
 
   def show
     @user = current_user
     @log = Log.find(params[:id])
-    @logs = @user.logs
+    @logs = @user.logs.page(params[:page]).per(8)
   end
 
   def edit
