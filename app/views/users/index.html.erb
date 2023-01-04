@@ -11,7 +11,11 @@
         <tbody>
         <% @users.each do |user| %>
           <tr>
-            <td class="p-4"><%= user.name %></td>
+            <td class="p-4">
+              <%= link_to user_path(user.id), class:"text-dark"  do %>
+                <%= user.name %>
+              <% end %>
+            </td>
           </tr>
         <% end %>
         </tbody>
