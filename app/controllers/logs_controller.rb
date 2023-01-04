@@ -13,7 +13,7 @@ class LogsController < ApplicationController
   def show
     @user = current_user
     @log = Log.find(params[:id])
-    @logs = @user.logs.page(params[:page]).per(8)
+    @logs = @user.logs
   end
 
   def edit
