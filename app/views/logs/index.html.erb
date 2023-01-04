@@ -1,30 +1,51 @@
 <div class="container">
   <div class="row">
-    <h2>みんなのログ</h2>
-    <h3>みんなの総学習時間 : <%= @logs.sum(:study_record) %>(h)</h3>
-    <table class="table table-success table-hover shadow">
-      <thead>
-        <tr>
-          <th class="p-4">タイトル</th>
-          <th class="p-4">ユーザー名</th>
-          <th class="p-4">カテゴリ名</th>
-          <th class="p-4">成果</th>
-          <th class="p-4">学習時間</th>
-        </tr>
-      </thead>
-      <tbody>
-      <% @logs.each do |log| %>
-        <tr>
-          <td class="p-4"><%= log.title %></td>
-          <td class="p-4"><%= log.user.name %></td>
-          <td class="p-4"><%= log.category.name %></td>
-          <td class="p-4"><%= log.achieve %></td>
-          <td class="p-4"><%= log.study_record %></td>
-        </tr>
-      <% end %>
-      </tbody>
-    </table>
-    <%= link_to "ユーザー一覧はこちら", users_path, class:"btn btn-primary btn-block"%>
-
+    <div class="col">
+      <h2>みんなのログ</h2>
+      <h3>みんなの総学習時間 : <%= @logs.sum(:study_record) %>(h)</h3>
+      <table class="table table-success table-hover shadow">
+        <thead>
+          <tr>
+            <th class="p-4">タイトル</th>
+            <th class="p-4">ユーザー名</th>
+            <th class="p-4">カテゴリ名</th>
+            <th class="p-4">成果</th>
+            <th class="p-4">学習時間</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @logs.each do |log| %>
+          <tr>
+            <td class="p-4">
+              <%= link_to log_path(log), class:"text-dark" do %>
+                <%= log.title %>
+              <% end %>
+            </td>
+            <td class="p-4">
+              <%= link_to user_path(log.user.id), class:"text-dark" do %>
+                <%= log.user.name %>
+              <% end %>
+            </td>
+            <td class="p-4">
+              <%= link_to category_path(log.category.id), class:"text-dark" do %>
+                <%= log.category.name %>
+              <% end %>
+            </td>
+            <td class="p-4">
+              <%= link_to log_path(log), class:"text-dark" do %>
+                <%= log.achieve %>
+              <% end %>
+            </td>
+            <td class="p-4">
+              <%= link_to log_path(log), class:"text-dark" do %>
+                <%= log.study_record %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+      <%= link_to "ユーザー一覧はこちら", users_path, class:"btn btn-primary btn-block"%>
+    </div>
   <div>
 <div>
