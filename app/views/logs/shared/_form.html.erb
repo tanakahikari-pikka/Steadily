@@ -29,10 +29,12 @@
     <%= f.label :study_record, '学習時間' %>
     <%= f.number_field :study_record, step: "0.1", class: 'form-control' %>
   </div>
-  <% if controller.action_name == "edit" %>
-    <%= f.submit "編集", class: 'btn-lg btn-success rounded-pill' %>
-  <% end %>
-  <% if controller.action_name == "new" %>
-    <%= f.submit "記録", class: 'btn-lg btn-success rounded-pill' %>
-  <% end %>
+  <div class="w-50 center-block mt-5">
+    <% if controller.action_name == "edit" %>
+      <%= f.submit "編集", class: 'btn-lg btn-success rounded-pill btn-block' %>
+    <% end %>
+    <% if controller.action_name == "new" %>
+      <%= f.submit "記録", class: 'btn-lg btn-primary rounded-pill btn-block' %>
+    <% end %>
+  </div>
 <% end %>
