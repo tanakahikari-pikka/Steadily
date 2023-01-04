@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xs-9">
       <h2>マイページ</h2>
-      <h3><%= current_user.name %>総学習時間 : <%= @logs.sum(:study_record) %>(h) </h3>
+      <h3><%= current_user.name %>総学習時間 : <%= @user.logs.sum(:study_record) %>(h) </h3>
       <h3><%= current_user.name %>のログ</h3>
       <table class="table table-success table-hover shadow">
         <thead>
