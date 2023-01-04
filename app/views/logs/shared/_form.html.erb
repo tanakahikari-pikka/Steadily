@@ -1,6 +1,6 @@
 <%= form_with model: log,local:true,  url: logs_path, method: :post do |f| %>
   <div class="form-group has-success">
-    <h2>タイトル</h2>
+    <%= f.label :title, 'タイトル' %>
     <%= f.text_field :title, class: 'form-control' %>
   </div>
   <div class="form-group has-success">

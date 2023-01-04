@@ -21,9 +21,21 @@
                     <%= log.title %>
                   <% end %>
                 </td>
-                <td class="p-4"><%= log.category.name %></td>
-                <td class="p-4"><%= log.achieve %></td>
-                <td class="p-4"><%= log.study_record %></td>
+                <td class="p-4">
+                  <%=link_to category_path(log.category.id), class:"text-dark" do %>
+                    <%= log.category.name %>
+                  <% end %>
+                </td>
+                <td class="p-4">
+                  <%=link_to log_path(log), class:"text-dark" do %>
+                    <%= log.achieve %>
+                  <% end %>
+                  </td>
+                <td class="p-4">
+                  <%=link_to log_path(log), class:"text-dark" do %>
+                    <%= log.study_record %>
+                  <% end %>
+                </td>
             </tr>
         <% end %>
         </tbody>

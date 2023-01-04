@@ -12,31 +12,7 @@
   </head>
 
   <body>
-  <header>
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12">
-          <h1 class="col-xs-3">Steadily</h1>
-          <ul class="col-xs-9 list-inline vertical-align-center">
-            <li class="col-xs-3">
-              <%= link_to "みんなのログ", logs_path %>
-            </li>
-            <li class="col-xs-3">
-              <% if user_signed_in? %>
-                <%= link_to "マイページ", user_path(current_user.id) %>
-              <% end %>
-            </li>
-            <li class="col-xs-3">
-              <%= link_to "ログ作成", new_log_path %>
-            </li>
-            <li class="col-xs-3">
-              <%= link_to "カテゴリ一覧", categories_path %>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </header>
+    <%= render 'layouts/shared/header' %>
     <%= yield %>
   </body>
 </html>
