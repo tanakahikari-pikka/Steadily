@@ -24,16 +24,21 @@ class LogsController < ApplicationController
   def create
     @log = Log.new(log_params)
     @log.user_id = current_user.id
-    @log.save
-    redirect_to log_path(@log)
+    if @log.save
+      flash[:notice] = 'You have created book successfully.'
+      redirect_to log_path(@log)
+    else
+      render :new
+    end
   end
 
   def update
     @log = Log.find(params[:id])
-    if @log.update(book_params)
+    if @log.update(log_params)
       flash[:notice] = 'You have updated book successfully.'
       redirect_to log_path(@log)
     else
+      @user = current_user
       render :edit
     end
   end

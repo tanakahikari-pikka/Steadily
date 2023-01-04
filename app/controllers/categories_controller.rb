@@ -16,7 +16,7 @@ class CategoriesController < ApplicationController
     if @category.save
       redirect_to categories_path
     else
-      @categories = Category.all
+      @categories = Category.all.page(params[:page]).per(8)
       render 'index'
     end
   end

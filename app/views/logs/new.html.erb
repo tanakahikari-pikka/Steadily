@@ -1,10 +1,13 @@
 <div class="container">
   <div class="row">
     <div class="col">
+      <%= render 'logs/shared/error_messages', resource: @log %>
       <h2>
         ログ作成
       </h2>
-      <%= render 'logs/shared/form', log: @log %>
+      <%= form_with model: @log,local:true,  url: logs_path, method: :post do |f| %>
+        <%= render 'logs/shared/form', f: f %>
+      <% end %>
     </div>
   </div>
 </div>
