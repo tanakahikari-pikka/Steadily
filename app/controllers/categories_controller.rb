@@ -3,12 +3,12 @@ class CategoriesController < ApplicationController
 
   def index
     @category = Category.new
-    @categories = Category.all
+    @categories = Category.all.page(params[:page]).per(8)
   end
 
   def show
     @category = Category.find(params[:id])
-    @logs = @category.logs
+    @logs = @category.logs.page(params[:page]).per(8)
   end
 
   def create

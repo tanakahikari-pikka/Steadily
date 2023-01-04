@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col">
       <h2>みんなのログ</h2>
-      <h3>みんなの総学習時間 : <%= @logs.sum(:study_record) %>(h)</h3>
+      <h3>みんなの総学習時間 : <%= @study_record_sum %>(h)</h3>
       <table class="table table-success table-hover shadow">
         <thead>
           <tr>
@@ -45,6 +45,7 @@
         <% end %>
         </tbody>
       </table>
+      <%= paginate @logs %>
       <%= link_to "ユーザー一覧はこちら", users_path, class:"btn btn-primary btn-block"%>
     </div>
   <div>
