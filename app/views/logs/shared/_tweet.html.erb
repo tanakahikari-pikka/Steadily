@@ -5,7 +5,7 @@ data-text="#<%= log.category.name %>  No.<%= logs.count %>
 
 【成果】
 <%= log.achieve %>
-学習時間 (h) : <%= log.study_record %> 合計 (h) : <%= sum %>
+学習時間 (h) : <%= "%.15g"%log.study_record%> 合計 (h) : <%= sum %>
 "
 class="twitter-share-button" data-url="
 by Steadily" data-show-count="false">Tweet</a>
