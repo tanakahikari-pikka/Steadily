@@ -7,22 +7,24 @@
     <div class="col">
       <h3>#<%= @log.category.name %></h2>
       <h2><%= @log.title %></h2>
-      <div class="d-flex">
-        <p class="me-3">学習の成果を共有する=></p>
-        <%= render 'logs/shared/tweet', log: @log, logs: @logs, sum: sum %>
-      </div>
+      <% if user_signed_in? %>
+        <% if @user.id == current_user.id %>
+          <div class="d-flex">
+            <p class="me-3">学習の成果を共有する=></p>
+              <%= render 'logs/shared/tweet', log: @log, logs: @logs, sum: sum %>
+          </div>
+        <% end %>
+      <% end %>
       <table class="table table-success table-hover">
         <tbody>
-          <% unless @log.user_id == current_user.id %>
             <tr>
               <td>
                 ユーザー名
               </td>
               <td>
-                <%= current_user.name %>
+                <%= @user.name %>
               </td>
             </tr>
-          <% end %>
           <tr>
             <td>
               成果
@@ -74,10 +76,12 @@
         </tbody>
       </table>
     </div>
-    <div class="text-dark d-flex justify-content-center">
-      <%= link_to "編集", edit_log_path(@log), class:"btn-lg btn-success me-5" %>
-      <%= button_to "削除", log_path(@log), method: :delete, class:"btn-lg btn-danger" %>
-    </div>
+    <% if user_signed_in? %>
+      <div class="text-dark d-flex justify-content-center">
+        <%= link_to "編集", edit_log_path(@log), class:"btn-lg btn-success me-5" %>
+        <%= button_to "削除", log_path(@log), method: :delete, class:"btn-lg btn-danger" %>
+      </div>
+    <% end %>
   </div>
 </div>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
