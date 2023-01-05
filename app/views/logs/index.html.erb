@@ -38,7 +38,7 @@
             </td>
             <td class="p-4">
               <%= link_to log_path(log), class:"text-dark" do %>
-                <%= log.study_record %>
+                <%= "%.15g"%log.study_record %>
               <% end %>
             </td>
           </tr>

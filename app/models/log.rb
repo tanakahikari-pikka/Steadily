@@ -6,4 +6,5 @@ class Log < ApplicationRecord
   validates :category, presence: true, length: {maximum: 255}
   validates :achieve, presence: true, length: {maximum: 2056}
   validates :study_record, presence: true
+
 end
