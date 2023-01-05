@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = current_user
+    @user = User.find(params[:id])
     @logs = @user.logs.page(params[:page]).per(8)
     @categories = @user.categories.distinct
     @category_logs = @user.categories.group(:name).count

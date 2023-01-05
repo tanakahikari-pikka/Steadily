@@ -2,24 +2,38 @@
     <div class="container">
       <div class="row">
         <div class="col-xs-12">
-          <%= link_to logs_path do %>
-            <h1 class="col-xs-3 text-dark">Steadily</h1>
+          <% if user_signed_in? %>
+            <%= link_to logs_path do %>
+              <h1 class="col-xs-3 text-dark">Steadily</h1>
+            <% end %>
+          <% else %>
+            <%= link_to top_home_path do %>
+              <h1 class="col-xs-3 text-dark">Steadily</h1>
+            <% end %>
           <% end %>
           <ul class="col-xs-9 list-inline vertical-align-center">
             <li class="col-xs-3 p-5 text-dark">
               <%= link_to "みんなのログ", logs_path, class:"text-dark"  %>
             </li>
-            <li class="col-xs-3 p-5 text-dark">
-              <% if user_signed_in? %>
-                <%= link_to "マイページ", user_path(current_user.id), class:"text-dark"  %>
-              <% end %>
-            </li>
-            <li class="col-xs-3 p-5">
-              <%= link_to "カテゴリ一覧", categories_path, class:"text-dark" %>
-            </li>
-            <li class="col-xs-3 p-5 text-dark">
-              <%= link_to "ログ作成", new_log_path, class:"text-dark"  %>
-            </li>
+            <% if !user_signed_in? %>
+              <li class="col-xs-3 p-5 text-dark">
+                <%= link_to "サインアップ", new_user_registration_path, class:"text-dark"  %>
+              </li>
+              <li class="col-xs-3 p-5 text-dark">
+                <%= link_to "ログイン", new_user_session_path, class:"text-dark"  %>
+              </li>
+            <% end %>
+            <% if user_signed_in? %>
+              <li class="col-xs-3 p-5 text-dark">
+                  <%= link_to "マイページ", user_path(current_user.id), class:"text-dark"  %>
+              </li>
+              <li class="col-xs-3 p-5">
+                <%= link_to "カテゴリ一覧", categories_path, class:"text-dark" %>
+              </li>
+              <li class="col-xs-3 p-5 text-dark">
+                <%= link_to "ログ作成", new_log_path, class:"text-dark"  %>
+              </li>
+            <% end %>
           </ul>
         </div>
       </div>
