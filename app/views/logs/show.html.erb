@@ -8,10 +8,12 @@
       <h3>#<%= @log.category.name %></h2>
       <h2><%= @log.title %></h2>
       <% if user_signed_in? %>
-        <div class="d-flex">
-          <p class="me-3">学習の成果を共有する=></p>
-            <%= render 'logs/shared/tweet', log: @log, logs: @logs, sum: sum %>
-        </div>
+        <% if @user.id == current_user.id %>
+          <div class="d-flex">
+            <p class="me-3">学習の成果を共有する=></p>
+              <%= render 'logs/shared/tweet', log: @log, logs: @logs, sum: sum %>
+          </div>
+        <% end %>
       <% end %>
       <table class="table table-success table-hover">
         <tbody>
