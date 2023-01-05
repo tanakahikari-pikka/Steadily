@@ -1,6 +1,9 @@
-<h1>Top#home</h1>
-<p>Find me in app/views/top/home.html.erb</p>
-<% if user_signed_in? %>
-<p>aaa</p>
-<% end %>
-<%= button_to "ログアウト",destroy_user_session_path, method: :delete %>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1 class="text-center"><strong>Steadily</strong>で君の努力を視覚化しよう</h1>
+        <%= link_to "サインアップ", new_user_registration_path, class:"btn btn-success btn-block w-50 center-block mt-4" %>
+        <%= link_to "ログイン", new_user_session_path, class:"btn btn-primary btn-block w-50 center-block"  %>
+    </div>
+  </div>
+</div>
