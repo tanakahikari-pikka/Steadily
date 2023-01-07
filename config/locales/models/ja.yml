@@ -1,0 +1,22 @@
+ja:
+  activerecord:
+    models:
+      log: ログ
+      category: カテゴリ
+      user: ユーザー
+    attributes:
+      log:
+        title: ログタイトル
+        achieve: 成果
+        study_record: 学習時間
+        keep: 良かった点
+        problem: 改善点
+        try: 今後試すこと
+        category_id: カテゴリー
+        user_id: ユーザー
+      category:
+        name: カテゴリ名
+        log_id: ログ
+      user:
+        name: ユーザー名
+        email: メールアドレス

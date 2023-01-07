@@ -23,16 +23,18 @@
       </table>
       <%= paginate @logs %>
     </div>
-    <% if user_signed_in? %>
+    <% if user_signed_in? && @user %>
       <div class="col-xs-3">
-        <h3><%= @user.name %>のカテゴリ一覧</h3>
-        <table class="table table-light table-hover shadow">
-          <% @categories.each do |category| %>
-            <tr>
-              <td><%= link_to category.name,category_path(category), class:"text-dark" %> </td>
-            </tr>
-          <% end %>
-        </table>
+        <% if !@user.categories.empty? %>
+          <h3><%= @user.name %>のカテゴリ一覧</h3>
+          <table class="table table-light table-hover shadow">
+            <% @user.categories.distinct.each do |category| %>
+              <tr>
+                <td><%= link_to category.name,category_path(category), class:"text-dark" %> </td>
+              </tr>
+            <% end %>
+          </table>
+        <% end %>
       </div>
     <% end %>
   <div>

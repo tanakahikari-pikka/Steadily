@@ -7,7 +7,7 @@
         <thead>
           <tr>
             <th class="p-4">
-              カテゴリー名
+              カテゴリ名
             </th>
           </tr>
         </thead>
@@ -27,7 +27,7 @@
     </div>
     <div class="col-xs-4">
       <%= form_with model: @category, local: true, class:"mt-5" do |f| %>
-        <%= f.label :name, 'カテゴリー名'%>
+        <%= f.label :name, 'カテゴリ名'%>
         <%= f.text_field :name, class:'form-control' %>
         <%= f.submit '追加', class: 'btn btn-primary btn-block mt-4 rounded-pill' %>
       <% end %>
