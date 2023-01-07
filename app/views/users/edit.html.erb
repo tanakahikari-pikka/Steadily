@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2>
+        ユーザー編集
+      </h2>
+      <%= render 'users/shared/error_messages', resource: @user %>
+      <%= link_to "マイページに戻る",user_path(@user) %>
+      <%= form_with model: @user,local:true do |f| %>
+        <%= render 'users/shared/form', f: f %>
+      <% end %>
+      <div class="w-50 center-block mt-5">
+        <%= button_to "ログアウト", destroy_user_session_path, class:'btn-lg btn-danger rounded-pill btn-block', method: :delete %>
+      </div>
+    </div>
+  </div>
+</div>

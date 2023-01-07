@@ -4,6 +4,7 @@
       <% if user_signed_in? %>
         <% if @user.id == current_user.id %>
           <h2>マイページ</h2>
+          <%= link_to "ユーザー情報を編集する",edit_user_path(@user) %>
         <% else %>
           <h2><%= @user.name %>のログ</h2>
         <% end %>
@@ -50,15 +51,12 @@
       <%= paginate @logs %>
     </div>
     <div class="col-xs-3">
-      <%= button_to "ログアウト", destroy_user_session_path, method: :delete %>
       <h3><%= @user.name %>のカテゴリ一覧</h3>
-      <table>
+      <table class="table table-light table-hover shadow">
         <% @categories.each do |category| %>
-          <tbody>
-            <tr>
-              <td><%= link_to category.name,category_path(category) %> </td>
-            </tr>
-          </tbody>
+          <tr>
+            <td><%= link_to category.name,category_path(category), class:"text-dark" %> </td>
+          </tr>
         <% end %>
       </table>
       <div class="row">
@@ -72,3 +70,4 @@
     </div>
   <div>
 <div>
+

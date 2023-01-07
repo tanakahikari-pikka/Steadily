@@ -7,9 +7,11 @@ class CategoriesController < ApplicationController
   end
 
   def show
+    @categories = Category.all
     @category = Category.find(params[:id])
     @logs = @category.logs.page(params[:page]).per(8)
     @logs_all = @category.logs
+    @user = current_user
   end
 
   def create

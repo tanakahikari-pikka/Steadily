@@ -23,5 +23,17 @@
       </table>
       <%= paginate @logs %>
     </div>
+    <% if user_signed_in? %>
+      <div class="col-xs-3">
+        <h3><%= @user.name %>のカテゴリ一覧</h3>
+        <table class="table table-light table-hover shadow">
+          <% @categories.each do |category| %>
+            <tr>
+              <td><%= link_to category.name,category_path(category), class:"text-dark" %> </td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+    <% end %>
   <div>
 <div>
