@@ -48,6 +48,9 @@ gem 'bootstrap-sass'
 gem 'sass-rails'
 gem 'chartkick'
 gem 'kaminari'
+gem 'rails-i18n'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -77,4 +80,8 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem 'rspec-rails'
+  gem "guard"
+  gem "guard-rspec"
+  gem "factory_bot_rails"
 end

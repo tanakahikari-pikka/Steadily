@@ -7,6 +7,8 @@ class CategoriesController < ApplicationController
   end
 
   def show
+    @user = current_user
+    @categories = Category.all
     @category = Category.find(params[:id])
     @logs = @category.logs.page(params[:page]).per(8)
     @logs_all = @category.logs
