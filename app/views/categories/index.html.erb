@@ -1,36 +1,34 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-8">
-      <h2>カテゴリ一覧</h2>
-      <%= render 'logs/shared/error_messages', resource: @category %>
-      <table class="table table-success table-hover shadow">
-        <thead>
+<div class="row">
+  <div class="col-xs-8">
+    <h2>カテゴリ一覧</h2>
+    <%= render 'logs/shared/error_messages', resource: @category %>
+    <table class="table table-success table-hover shadow">
+      <thead>
+        <tr>
+          <th class="p-4">
+            カテゴリ名
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @categories.each do |category|  %>
           <tr>
-            <th class="p-4">
-              カテゴリ名
-            </th>
+            <td class="p-4">
+              <%= link_to category_path(category.id), class:"text-dark" do %>
+                <%= category.name %>
+              <% end %>
+            </td>
           </tr>
-        </thead>
-        <tbody>
-          <% @categories.each do |category|  %>
-            <tr>
-              <td class="p-4">
-                <%= link_to category_path(category.id), class:"text-dark" do %>
-                  <%= category.name %>
-                <% end %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-      <%= paginate @categories %>
-    </div>
-    <div class="col-xs-4">
-      <%= form_with model: @category, local: true, class:"mt-5" do |f| %>
-        <%= f.label :name, 'カテゴリ名'%>
-        <%= f.text_field :name, class:'form-control' %>
-        <%= f.submit '追加', class: 'btn btn-primary btn-block mt-4 rounded-pill' %>
-      <% end %>
-    </div>
-  <div>
+        <% end %>
+      </tbody>
+    </table>
+    <%= paginate @categories %>
+  </div>
+  <div class="col-xs-4">
+    <%= form_with model: @category, local: true, class:"mt-5" do |f| %>
+      <%= f.label :name, 'カテゴリ名'%>
+      <%= f.text_field :name, class:'form-control' %>
+      <%= f.submit '追加', class: 'btn btn-primary btn-block mt-4 rounded-pill' %>
+    <% end %>
+  </div>
 <div>

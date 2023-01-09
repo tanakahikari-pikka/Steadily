@@ -2,86 +2,85 @@
 <% @logs.each do |log| %>
   <% sum += log.study_record %>
 <% end %>
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <h3>#<%= @log.category.name %></h2>
-      <h2><%= @log.title %></h2>
-      <% if user_signed_in? %>
-        <% if @user.id == current_user.id %>
-          <div class="d-flex">
-            <p class="me-3">学習の成果を共有する=></p>
-              <%= render 'logs/shared/tweet', log: @log, logs: @logs, sum: sum %>
-          </div>
-        <% end %>
-      <% end %>
-      <table class="table table-success table-hover">
-        <tbody>
-            <tr>
-              <td>
-                ユーザー名
-              </td>
-              <td>
-                <%= @user.name %>
-              </td>
-            </tr>
-          <tr>
-            <td>
-              成果
-            </td>
-            <td>
-              <%= @log.achieve %>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              学習時間 (h)
-            </td>
-            <td>
-              <%= "%.15g"%@log.study_record%>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              総学習時間
-            </td>
-            <td>
-              <%= sum %>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              良かった点
-            </td>
-            <td>
-              <%= @log.keep %>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              改善点
-            </td>
-            <td>
-              <%= @log.problem %>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              今後試すこと
-            </td>
-            <td>
-              <%= @log.try %>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+<div class="row">
+  <div class="col">
+    <h3>#<%= @log.category.name %></h2>
+    <h2><%= @log.title %></h2>
     <% if user_signed_in? %>
-      <div class="text-dark d-flex justify-content-center">
-        <%= link_to "編集", edit_log_path(@log), class:"btn-lg btn-success me-5" %>
-        <%= button_to "削除", log_path(@log), method: :delete, class:"btn-lg btn-danger" %>
-      </div>
+      <% if @user.id == current_user.id %>
+        <div class="d-flex">
+          <p class="me-3">学習の成果を共有する=></p>
+            <%= render 'logs/shared/tweet', log: @log, logs: @logs, sum: sum %>
+        </div>
+      <% end %>
     <% end %>
+    <table class="table table-success table-hover">
+      <tbody>
+          <tr>
+            <td>
+              ユーザー名
+            </td>
+            <td>
+              <%= @user.name %>
+            </td>
+          </tr>
+        <tr>
+          <td>
+            成果
+          </td>
+          <td>
+            <%= @log.achieve %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            学習時間 (h)
+          </td>
+          <td>
+            <%= "%.15g"%@log.study_record%>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            総学習時間
+          </td>
+          <td>
+            <%= sum %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            良かった点
+          </td>
+          <td>
+            <%= @log.keep %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            改善点
+          </td>
+          <td>
+            <%= @log.problem %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            今後試すこと
+          </td>
+          <td>
+            <%= @log.try %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+  <% if user_signed_in? %>
+    <div class="text-dark d-flex justify-content-center">
+      <%= link_to "編集", edit_log_path(@log), class:"btn-lg btn-success me-5" %>
+      <%= button_to "削除", log_path(@log), method: :delete, class:"btn-lg btn-danger" %>
+    </div>
+  <% end %>
 </div>
+
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>

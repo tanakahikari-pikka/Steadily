@@ -1,73 +1,70 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-9">
-      <% if user_signed_in? %>
-        <% if @user.id == current_user.id %>
-          <h2>マイページ</h2>
-          <%= link_to "ユーザー情報を編集する",edit_user_path(@user) %>
-        <% else %>
-          <h2><%= @user.name %>のログ</h2>
-        <% end %>
+<div class="row">
+  <div class="col-xs-9">
+    <% if user_signed_in? %>
+      <% if @user.id == current_user.id %>
+        <h2>マイページ</h2>
+        <%= link_to "ユーザー情報を編集する",edit_user_path(@user) %>
       <% else %>
         <h2><%= @user.name %>のログ</h2>
       <% end %>
-      <h3><%= @user.name %>の総学習時間 : <%= @user.logs.sum(:study_record) %>(h) </h3>
-      <table class="table table-success table-hover shadow">
-        <thead>
+    <% else %>
+      <h2><%= @user.name %>のログ</h2>
+    <% end %>
+    <h3><%= @user.name %>の総学習時間 : <%= @user.logs.sum(:study_record) %>(h) </h3>
+    <table class="table table-success table-hover shadow">
+      <thead>
+        <tr>
+          <th class="p-4">ログタイトル</th>
+          <th class="p-4">カテゴリ名</th>
+          <th class="p-4">成果</th>
+          <th class="p-4">学習時間 (h)</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @logs.each do |log| %>
           <tr>
-            <th class="p-4">ログタイトル</th>
-            <th class="p-4">カテゴリ名</th>
-            <th class="p-4">成果</th>
-            <th class="p-4">学習時間 (h)</th>
+              <td class="p-4">
+                <%=link_to log_path(log), class:"text-dark" do %>
+                  <%= log.title %>
+                <% end %>
+              </td>
+              <td class="p-4">
+                <%=link_to category_path(log.category.id), class:"text-dark" do %>
+                  <%= log.category.name %>
+                <% end %>
+              </td>
+              <td class="p-4">
+                <%=link_to log_path(log), class:"text-dark" do %>
+                  <%= log.achieve %>
+                <% end %>
+                </td>
+              <td class="p-4">
+                <%=link_to log_path(log), class:"text-dark" do %>
+                  <%= "%.15g"%log.study_record %>
+                <% end %>
+              </td>
           </tr>
-        </thead>
-        <tbody>
-        <% @logs.each do |log| %>
-            <tr>
-                <td class="p-4">
-                  <%=link_to log_path(log), class:"text-dark" do %>
-                    <%= log.title %>
-                  <% end %>
-                </td>
-                <td class="p-4">
-                  <%=link_to category_path(log.category.id), class:"text-dark" do %>
-                    <%= log.category.name %>
-                  <% end %>
-                </td>
-                <td class="p-4">
-                  <%=link_to log_path(log), class:"text-dark" do %>
-                    <%= log.achieve %>
-                  <% end %>
-                  </td>
-                <td class="p-4">
-                  <%=link_to log_path(log), class:"text-dark" do %>
-                    <%= "%.15g"%log.study_record %>
-                  <% end %>
-                </td>
-            </tr>
-        <% end %>
-        </tbody>
-      </table>
-      <%= paginate @logs %>
+      <% end %>
+      </tbody>
+    </table>
+    <%= paginate @logs %>
+  </div>
+  <div class="col-xs-3">
+    <h3><%= @user.name %>のカテゴリ一覧</h3>
+    <table class="table table-light table-hover shadow">
+      <% @categories.each do |category| %>
+        <tr>
+          <td><%= link_to category.name,category_path(category), class:"text-dark" %> </td>
+        </tr>
+      <% end %>
+    </table>
+    <div class="row">
+      <p>ログ数</p>
+      <%= pie_chart @category_logs %>
     </div>
-    <div class="col-xs-3">
-      <h3><%= @user.name %>のカテゴリ一覧</h3>
-      <table class="table table-light table-hover shadow">
-        <% @categories.each do |category| %>
-          <tr>
-            <td><%= link_to category.name,category_path(category), class:"text-dark" %> </td>
-          </tr>
-        <% end %>
-      </table>
-      <div class="row">
-        <p>ログ数</p>
-        <%= pie_chart @category_logs %>
-      </div>
-      <div class="row">
-        <p>学習時間</p>
-        <%= pie_chart @category_study_records %>
-      </div>
+    <div class="row">
+      <p>学習時間</p>
+      <%= pie_chart @category_study_records %>
     </div>
-  <div>
+  </div>
 <div>
-

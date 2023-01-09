@@ -1,41 +1,39 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-9">
-      <h2><%= @category.name %>のログ</h2>
-      <h3>総学習時間 : <%= @logs_all.sum(:study_record) %>(h) </h3>
-      <table class="table table-success table-hover shadow">
-        <thead>
-          <tr>
-            <th class="p-4">タイトル</th>
-            <th class="p-4">成果</th>
-            <th class="p-4">学習時間 (h)</th>
-          </tr>
-        </thead>
-        <tbody>
-        <% @logs.each do |log| %>
-          <tr>
-            <td class="p-4"><%= log.title %></td>
-            <td class="p-4"><%= log.achieve %></td>
-            <td class="p-4"><%= "%.15g"%log.study_record %></td>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
-      <%= paginate @logs %>
+<div class="row">
+  <div class="col-xs-9">
+    <h2><%= @category.name %>のログ</h2>
+    <h3>総学習時間 : <%= @logs_all.sum(:study_record) %>(h) </h3>
+    <table class="table table-success table-hover shadow">
+      <thead>
+        <tr>
+          <th class="p-4">タイトル</th>
+          <th class="p-4">成果</th>
+          <th class="p-4">学習時間 (h)</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @logs.each do |log| %>
+        <tr>
+          <td class="p-4"><%= log.title %></td>
+          <td class="p-4"><%= log.achieve %></td>
+          <td class="p-4"><%= "%.15g"%log.study_record %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <%= paginate @logs %>
+  </div>
+  <% if user_signed_in? && @user %>
+    <div class="col-xs-3">
+      <% if !@user.categories.empty? %>
+        <h3><%= @user.name %>のカテゴリ一覧</h3>
+        <table class="table table-light table-hover shadow">
+          <% @user.categories.distinct.each do |category| %>
+            <tr>
+              <td><%= link_to category.name,category_path(category), class:"text-dark" %> </td>
+            </tr>
+          <% end %>
+        </table>
+      <% end %>
     </div>
-    <% if user_signed_in? && @user %>
-      <div class="col-xs-3">
-        <% if !@user.categories.empty? %>
-          <h3><%= @user.name %>のカテゴリ一覧</h3>
-          <table class="table table-light table-hover shadow">
-            <% @user.categories.distinct.each do |category| %>
-              <tr>
-                <td><%= link_to category.name,category_path(category), class:"text-dark" %> </td>
-              </tr>
-            <% end %>
-          </table>
-        <% end %>
-      </div>
-    <% end %>
-  <div>
+  <% end %>
 <div>

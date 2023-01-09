@@ -1,26 +1,24 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-9">
-      <h2>ユーザー一覧</h2>
-      <table class="table table-success table-hover shadow">
-        <thead>
-          <tr>
-            <th class="p-4">ユーザー名</th>
-          </tr>
-        </thead>
-        <tbody>
-        <% @users.each do |user| %>
-          <tr>
-            <td class="p-4">
-              <%= link_to user_path(user.id), class:"text-dark"  do %>
-                <%= user.name %>
-              <% end %>
-            </td>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
-      <%= paginate @users %>
-    </div>
-  <div>
+<div class="row">
+  <div class="col-xs-9">
+    <h2>ユーザー一覧</h2>
+    <table class="table table-success table-hover shadow">
+      <thead>
+        <tr>
+          <th class="p-4">ユーザー名</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td class="p-4">
+            <%= link_to user_path(user.id), class:"text-dark"  do %>
+              <%= user.name %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <%= paginate @users %>
+  </div>
 <div>

@@ -10,9 +10,10 @@
     <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
     <%= javascript_importmap_tags %>
   </head>
-
   <body>
     <%= render 'layouts/shared/header' %>
-    <%= yield %>
+    <div class="container mb-4 pb-4">
+      <%= yield %>
+    </div>
   </body>
 </html>
