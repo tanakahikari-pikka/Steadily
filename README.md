@@ -31,7 +31,7 @@ password: hikari54
 
 #　 使用技術
 
-Ruby 3.1.2
-Ruby on Rails 7.0.4
-bootstrap
-MySQL 8.0.30
+Ruby 3.1.2  
+Ruby on Rails 7.0.4  
+bootstrap  
+MySQL 8.0.30  
