@@ -1,9 +1,10 @@
-# README
+# アプリケーション名
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Steadily
 
-Things you may want to cover:
+# アプリケーション概要
+自分の取り組み（学習や努力）を日報形式で記録していくアプリケーションです。
+
 
 * Ruby version
 
