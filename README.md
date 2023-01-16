@@ -10,11 +10,10 @@ Steadily
 https://steadily.herokuapp.com/
 
 # アカウント
-自分自身でこのアプリケーションを利用しており、本アプリケーションの開発の軌跡をログで記録しています。
-下記のアカウントでログイン可能です。
+¥下記のアカウントでログイン可能です。
 
-email: hikaricareer1999@gmail.com  
-password: hikari54
+email: test@gmail.com  
+password: testtest
 
 # 利用方法
 ・　トップページに遷移後、フォームにユーザーネームとメールアドレス、パスワードを記入して登録します  
